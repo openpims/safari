@@ -19,7 +19,7 @@ Available on the App Store: [Coming Soon]
 
 ## Other Versions
 
-- [Chrome Extension](https://github.com/openpims/chrome)
+- [Chromium Extension](https://github.com/openpims/chromium)
 - [Firefox Extension](https://github.com/openpims/firefox)
 - [mitmproxy Version](https://github.com/openpims/mitmproxy) - For users who prefer not to use browser extensions
 
