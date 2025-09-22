@@ -7,11 +7,11 @@
     "version": "1.0",
 
     "icons": {
-        "48": "images/openpims.png",
-        "96": "images/openpims.png", 
-        "128": "images/openpims.png",
-        "256": "images/openpims.png",
-        "512": "images/openpims.png"
+        "48": "images/openpims_48.png",
+        "96": "images/openpims_96.png",
+        "128": "images/openpims_128.png",
+        "256": "images/openpims_256.png",
+        "512": "images/openpims_512.png"
     },
 
     "background": {
@@ -29,7 +29,7 @@
 
     "action": {
         "default_popup": "popup.html",
-        "default_icon": "images/openpims.png"
+        "default_icon": "images/openpims_48.png"
     },
 
     "permissions": [
@@ -41,13 +41,5 @@
 
     "host_permissions": [
         "<all_urls>"
-    ],
-
-    "declarative_net_request": {
-        "rule_resources": [{
-            "id": "openpims_headers",
-            "enabled": true,
-            "path": "dnr_rules.json"
-        }]
-    }
+    ]
 }

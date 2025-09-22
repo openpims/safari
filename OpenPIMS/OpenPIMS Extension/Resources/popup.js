@@ -122,16 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (logoutButton) {
         logoutButton.addEventListener('click', async () => {
             try {
-                // Entferne die Header-Regeln (falls vorhanden)
-                if (browserAPI.declarativeNetRequest) {
-                    try {
-                        await browserAPI.declarativeNetRequest.updateDynamicRules({
-                            removeRuleIds: [1]
-                        });
-                    } catch (error) {
-                        // Ignore errors when removing rules
-                    }
-                }
 
                 // Lösche die gespeicherten Daten
                 await browserAPI.storage.local.remove(['openPimsUrl', 'isLoggedIn', 'token', 'email', 'serverUrl']);

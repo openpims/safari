@@ -1,44 +1,48 @@
 // Background Script für OpenPIMS Safari Web Extension mit DNR
 
+// Dynamische User-Agent Rule für OpenPIMS URL
+async function addOpenPIMSUserAgentRule(openPimsUrl) {
+    if (!browser.declarativeNetRequest) {
+        throw new Error('declarativeNetRequest not available');
+    }
+
+    try {
+        const ruleId = 100;
+
+        // Entferne existierende Regel falls vorhanden
+        await browser.declarativeNetRequest.updateDynamicRules({
+            removeRuleIds: [ruleId]
+        }).catch(() => {}); // Ignoriere Fehler falls Regel nicht existiert
+
+        // Füge neue Regel hinzu
+        await browser.declarativeNetRequest.updateDynamicRules({
+            addRules: [{
+                "id": ruleId,
+                "priority": 1,
+                "action": {
+                    "type": "modifyHeaders",
+                    "requestHeaders": [{
+                        "header": "User-Agent",
+                        "operation": "set",
+                        "value": `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15 OpenPIMS/1.0 (+${openPimsUrl})`
+                    }]
+                },
+                "condition": {
+                    "urlFilter": "|http*",
+                    "resourceTypes": ["main_frame", "xmlhttprequest", "sub_frame", "script", "stylesheet", "image", "font", "media", "other"]
+                }
+            }]
+        });
+
+        return ruleId;
+
+    } catch (error) {
+        throw error;
+    }
+}
+
 // Declarative Net Request Setup
 if (browser.declarativeNetRequest) {
-    
-    // Dynamische User-Agent Rule für OpenPIMS URL
-    async function addOpenPIMSUserAgentRule(openPimsUrl) {
-        try {
-            const ruleId = 1;
-            
-            // Entferne existierende Regel falls vorhanden
-            await browser.declarativeNetRequest.updateDynamicRules({
-                removeRuleIds: [ruleId]
-            }).catch(() => {}); // Ignoriere Fehler falls Regel nicht existiert
-            
-            // Füge neue Regel hinzu
-            await browser.declarativeNetRequest.updateDynamicRules({
-                addRules: [{
-                    "id": ruleId,
-                    "priority": 1,
-                    "action": {
-                        "type": "modifyHeaders",
-                        "requestHeaders": [{
-                            "header": "User-Agent",
-                            "operation": "set",
-                            "value": `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15 OpenPIMS/1.0 (+${openPimsUrl})`
-                        }]
-                    },
-                    "condition": {
-                        "urlFilter": "|http*",
-                        "resourceTypes": ["main_frame", "xmlhttprequest", "sub_frame", "script", "stylesheet", "image", "font", "media", "other"]
-                    }
-                }]
-            });
-            
-            return ruleId;
-
-        } catch (error) {
-            throw error;
-        }
-    }
     
     // Prüfe beim Start ob User eingeloggt ist und erstelle Regel
     browser.storage.local.get(['openPimsUrl', 'isLoggedIn']).then(result => {
@@ -51,20 +55,22 @@ if (browser.declarativeNetRequest) {
 
 // Storage Listener für OpenPIMS-Konfiguration
 browser.storage.onChanged.addListener(async (changes, namespace) => {
-    if (namespace === 'local' && changes.openPimsUrl) {
-        // Aktualisiere User-Agent DNR Rule mit neuer URL
-        if (browser.declarativeNetRequest && changes.openPimsUrl.newValue) {
+    if (namespace === 'local' && (changes.openPimsUrl || changes.isLoggedIn)) {
+        // Aktualisiere User-Agent DNR Rule
+        if (browser.declarativeNetRequest) {
             try {
-                await addOpenPIMSUserAgentRule(changes.openPimsUrl.newValue);
-            } catch (error) {
-                // Silently handle error
-            }
-        } else if (browser.declarativeNetRequest && !changes.openPimsUrl.newValue) {
-            // URL gelöscht - entferne die Regel
-            try {
-                await browser.declarativeNetRequest.updateDynamicRules({
-                    removeRuleIds: [1]
-                });
+                // Hole aktuelle Werte
+                const result = await browser.storage.local.get(['openPimsUrl', 'isLoggedIn']);
+
+                if (result.isLoggedIn && result.openPimsUrl) {
+                    // User ist eingeloggt und hat URL - erstelle Regel
+                    await addOpenPIMSUserAgentRule(result.openPimsUrl);
+                } else {
+                    // User ist ausgeloggt oder hat keine URL - entferne Regel
+                    await browser.declarativeNetRequest.updateDynamicRules({
+                        removeRuleIds: [100]
+                    });
+                }
             } catch (error) {
                 // Silently handle error
             }
@@ -96,13 +102,6 @@ browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
 
             if (!trimmedUrl) {
                 throw new Error('No valid URL received from server');
-            }
-
-            // Erstelle dynamische DNR-Regel mit der erhaltenen URL
-            try {
-                await addOpenPIMSUserAgentRule(trimmedUrl);
-            } catch (error) {
-                // Silently handle error
             }
 
             sendResponse({ success: true, data: { token: trimmedUrl } });
