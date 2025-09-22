@@ -41,6 +41,26 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         self.webView.loadFileURL(Bundle.main.url(forResource: "Main", withExtension: "html")!, allowingReadAccessTo: Bundle.main.resourceURL!)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // Check if user is already logged in and sync with extension storage
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.syncLoginStateWithExtension()
+        }
+    }
+
+    private func syncLoginStateWithExtension() {
+        let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
+        let openPimsUrl = UserDefaults.standard.string(forKey: "openPimsToken")
+
+        if isLoggedIn && openPimsUrl != nil {
+            updateExtensionStorage(isLoggedIn: true, openPimsUrl: openPimsUrl)
+        } else {
+            updateExtensionStorage(isLoggedIn: false, openPimsUrl: nil)
+        }
+    }
+
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         // Override point for customization after page loads
     }
@@ -132,6 +152,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
                         UserDefaults.standard.set(token, forKey: "openPimsToken")
                         UserDefaults.standard.set(true, forKey: "isLoggedIn")
 
+                        // Store login state in extension storage for User-Agent modification
+                        self?.updateExtensionStorage(isLoggedIn: true, openPimsUrl: token)
+
                         self?.sendLoginResponse(success: true, error: nil, token: token)
                     } else {
                         self?.sendLoginResponse(success: false, error: "Kein gültiger Token vom Server erhalten", token: nil)
@@ -198,6 +221,40 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         UserDefaults.standard.removeObject(forKey: "openPimsServerUrl")
         UserDefaults.standard.removeObject(forKey: "openPimsToken")
         UserDefaults.standard.set(false, forKey: "isLoggedIn")
+
+        // Clear login state in extension storage
+        updateExtensionStorage(isLoggedIn: false, openPimsUrl: nil)
+    }
+
+    private func updateExtensionStorage(isLoggedIn: Bool, openPimsUrl: String?) {
+        var storageData: [String: Any] = [
+            "isLoggedIn": isLoggedIn
+        ]
+
+        if let url = openPimsUrl {
+            storageData["openPimsUrl"] = url
+        }
+
+        // Send storage update to Safari extension
+        let script = """
+            if (typeof browser !== 'undefined' && browser.storage && browser.storage.local) {
+                browser.storage.local.set(\(jsonString(from: storageData)))
+                    .then(() => console.log('Storage updated successfully'))
+                    .catch(error => console.error('Failed to update storage:', error));
+            } else {
+                console.log('Browser storage API not available');
+            }
+        """
+
+        DispatchQueue.main.async {
+            self.webView.evaluateJavaScript(script) { result, error in
+                if let error = error {
+                    print("Error updating extension storage: \(error)")
+                } else {
+                    print("Extension storage updated successfully")
+                }
+            }
+        }
     }
 
     private func jsonString(from dictionary: [String: Any]) -> String {
