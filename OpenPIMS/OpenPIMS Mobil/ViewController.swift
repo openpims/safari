@@ -174,6 +174,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
                         // Update User-Agent directly
                         self?.setupUserAgent()
 
+                        // Set OpenPIMS cookie for all domains
+                        self?.setOpenPIMSCookie(url: token)
+
                         self?.sendLoginResponse(success: true, error: nil, token: token)
                     } else {
                         self?.sendLoginResponse(success: false, error: "Kein gültiger Token vom Server erhalten", token: nil)
@@ -243,6 +246,67 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
 
         // Reset User-Agent to default
         setupUserAgent()
+
+        // Remove OpenPIMS cookie
+        removeOpenPIMSCookie()
+    }
+
+    private func setOpenPIMSCookie(url: String) {
+        // Set cookie in WKWebView for all future requests
+        let cookieScript = """
+            document.cookie = 'x-openpims=\(url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""); path=/; SameSite=Lax';
+            console.log('🍪 OpenPIMS cookie set:', '\(url)');
+        """
+
+        webView.evaluateJavaScript(cookieScript) { result, error in
+            if let error = error {
+                print("❌ Error setting OpenPIMS cookie: \(error)")
+            } else {
+                print("🍪 OpenPIMS cookie set successfully for: \(url)")
+            }
+        }
+
+        // Also set cookie in HTTP cookie storage for system-wide requests
+        if let cookieUrl = URL(string: "https://example.com") { // Generic domain for system cookies
+            let cookie = HTTPCookie(properties: [
+                .domain: ".example.com",
+                .path: "/",
+                .name: "x-openpims",
+                .value: url,
+                .sameSitePolicy: HTTPCookieStringPolicy.sameSiteLax
+            ])
+
+            if let cookie = cookie {
+                HTTPCookieStorage.shared.setCookie(cookie)
+                print("🍪 System HTTP cookie set for OpenPIMS")
+            }
+        }
+    }
+
+    private func removeOpenPIMSCookie() {
+        // Remove cookie from WKWebView
+        let removeCookieScript = """
+            document.cookie = 'x-openpims=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+            console.log('🗑️ OpenPIMS cookie removed');
+        """
+
+        webView.evaluateJavaScript(removeCookieScript) { result, error in
+            if let error = error {
+                print("❌ Error removing OpenPIMS cookie: \(error)")
+            } else {
+                print("🗑️ OpenPIMS cookie removed successfully")
+            }
+        }
+
+        // Remove from HTTP cookie storage
+        if let cookies = HTTPCookieStorage.shared.cookies {
+            for cookie in cookies {
+                if cookie.name == "x-openpims" {
+                    HTTPCookieStorage.shared.deleteCookie(cookie)
+                    print("🗑️ System HTTP cookie removed for OpenPIMS")
+                }
+            }
+        }
     }
 
     private func jsonString(from dictionary: [String: Any]) -> String {
