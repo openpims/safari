@@ -22,7 +22,9 @@
 
     "content_scripts": [{
         "js": [ "content.js" ],
-        "matches": [ "*://example.com/*" ]
+        "matches": [ "<all_urls>" ],
+        "run_at": "document_start",
+        "all_frames": true
     }],
 
     "action": {
@@ -32,10 +34,11 @@
 
     "permissions": [
         "declarativeNetRequest",
+        "declarativeNetRequestWithHostAccess",
         "storage"
     ],
 
     "host_permissions": [
-        "*://*/*"
+        "<all_urls>"
     ]
 }

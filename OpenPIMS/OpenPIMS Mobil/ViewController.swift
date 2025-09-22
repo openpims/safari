@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import SafariServices
 
 class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler {
 
@@ -15,8 +16,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Enable JavaScript
-        self.webView.configuration.preferences.javaScriptEnabled = true
+        // Enable JavaScript (using modern API for iOS 14+)
+        if #available(iOS 14.0, *) {
+            // JavaScript is enabled by default, but we can configure it per navigation if needed
+            // The configuration will be set in the WKNavigationDelegate methods if needed
+        } else {
+            // Fallback for older iOS versions
+            self.webView.configuration.preferences.javaScriptEnabled = true
+        }
 
         // Enable JavaScript in WebView for debugging
         if #available(iOS 16.4, *) {
@@ -33,32 +40,44 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         self.webView.navigationDelegate = self
         self.webView.scrollView.isScrollEnabled = false
 
+        // Add message handlers once
         self.webView.configuration.userContentController.add(self, name: "controller")
-
-        // Add console.log handler
         self.webView.configuration.userContentController.add(self, name: "consoleLog")
 
-        self.webView.loadFileURL(Bundle.main.url(forResource: "Main", withExtension: "html")!, allowingReadAccessTo: Bundle.main.resourceURL!)
-    }
+        // Set custom User-Agent if user is logged in
+        setupUserAgent()
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        // Check if user is already logged in and sync with extension storage
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.syncLoginStateWithExtension()
+        // Load the main HTML file
+        if #available(iOS 14.0, *) {
+            // Use modern loading with WKWebpagePreferences
+            let url = Bundle.main.url(forResource: "Main", withExtension: "html")!
+            let preferences = WKWebpagePreferences()
+            preferences.allowsContentJavaScript = true
+            self.webView.configuration.defaultWebpagePreferences = preferences
+            self.webView.loadFileURL(url, allowingReadAccessTo: Bundle.main.resourceURL!)
+        } else {
+            // Fallback for older iOS versions
+            self.webView.loadFileURL(Bundle.main.url(forResource: "Main", withExtension: "html")!, allowingReadAccessTo: Bundle.main.resourceURL!)
         }
     }
 
-    private func syncLoginStateWithExtension() {
+    private func setupUserAgent() {
         let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
         let openPimsUrl = UserDefaults.standard.string(forKey: "openPimsToken")
 
-        if isLoggedIn && openPimsUrl != nil {
-            updateExtensionStorage(isLoggedIn: true, openPimsUrl: openPimsUrl)
+        if isLoggedIn, let url = openPimsUrl, !url.isEmpty {
+            let customUserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1 OpenPIMS/1.0 (+\(url))"
+            self.webView.customUserAgent = customUserAgent
+            print("🔄 Swift: User-Agent set to: \(customUserAgent)")
         } else {
-            updateExtensionStorage(isLoggedIn: false, openPimsUrl: nil)
+            self.webView.customUserAgent = nil
+            print("🔄 Swift: User-Agent reset to default")
         }
+    }
+
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
@@ -152,8 +171,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
                         UserDefaults.standard.set(token, forKey: "openPimsToken")
                         UserDefaults.standard.set(true, forKey: "isLoggedIn")
 
-                        // Store login state in extension storage for User-Agent modification
-                        self?.updateExtensionStorage(isLoggedIn: true, openPimsUrl: token)
+                        // Update User-Agent directly
+                        self?.setupUserAgent()
 
                         self?.sendLoginResponse(success: true, error: nil, token: token)
                     } else {
@@ -222,39 +241,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
         UserDefaults.standard.removeObject(forKey: "openPimsToken")
         UserDefaults.standard.set(false, forKey: "isLoggedIn")
 
-        // Clear login state in extension storage
-        updateExtensionStorage(isLoggedIn: false, openPimsUrl: nil)
-    }
-
-    private func updateExtensionStorage(isLoggedIn: Bool, openPimsUrl: String?) {
-        var storageData: [String: Any] = [
-            "isLoggedIn": isLoggedIn
-        ]
-
-        if let url = openPimsUrl {
-            storageData["openPimsUrl"] = url
-        }
-
-        // Send storage update to Safari extension
-        let script = """
-            if (typeof browser !== 'undefined' && browser.storage && browser.storage.local) {
-                browser.storage.local.set(\(jsonString(from: storageData)))
-                    .then(() => console.log('Storage updated successfully'))
-                    .catch(error => console.error('Failed to update storage:', error));
-            } else {
-                console.log('Browser storage API not available');
-            }
-        """
-
-        DispatchQueue.main.async {
-            self.webView.evaluateJavaScript(script) { result, error in
-                if let error = error {
-                    print("Error updating extension storage: \(error)")
-                } else {
-                    print("Extension storage updated successfully")
-                }
-            }
-        }
+        // Reset User-Agent to default
+        setupUserAgent()
     }
 
     private func jsonString(from dictionary: [String: Any]) -> String {

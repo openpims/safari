@@ -14,7 +14,7 @@ async function addOpenPIMSUserAgentRule(openPimsUrl) {
             removeRuleIds: [ruleId]
         }).catch(() => {}); // Ignoriere Fehler falls Regel nicht existiert
 
-        // Füge neue Regel hinzu
+        // Füge neue Regel hinzu (nur User-Agent - bewährte Funktionalität)
         await browser.declarativeNetRequest.updateDynamicRules({
             addRules: [{
                 "id": ruleId,

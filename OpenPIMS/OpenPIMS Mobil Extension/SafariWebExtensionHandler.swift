@@ -29,6 +29,26 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
         os_log(.default, "Received message from browser.runtime.sendNativeMessage: %@ (profile: %@)", String(describing: message), profile?.uuidString ?? "none")
 
+        // Handle storage updates for User-Agent modification
+        if let messageDict = message as? [String: Any],
+           let action = messageDict["action"] as? String,
+           action == "updateStorage" {
+
+            let isLoggedIn = messageDict["isLoggedIn"] as? Bool ?? false
+            let openPimsUrl = messageDict["openPimsUrl"] as? String
+
+            // Store login state for extension access
+            let sharedDefaults = UserDefaults(suiteName: "group.openPIMS.shared")
+            sharedDefaults?.set(isLoggedIn, forKey: "isLoggedIn")
+            if let url = openPimsUrl {
+                sharedDefaults?.set(url, forKey: "openPimsUrl")
+            } else {
+                sharedDefaults?.removeObject(forKey: "openPimsUrl")
+            }
+
+            os_log(.default, "Updated storage: logged in = %@, URL = %@", String(isLoggedIn), openPimsUrl ?? "nil")
+        }
+
         let response = NSExtensionItem()
         if #available(iOS 15.0, macOS 11.0, *) {
             response.userInfo = [ SFExtensionMessageKey: [ "echo": message ] ]
