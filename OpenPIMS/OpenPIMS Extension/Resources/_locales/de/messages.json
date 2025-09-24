@@ -1,10 +1,10 @@
 {
     "extension_name": {
-        "message": "OpenPIMS - Keine Cookie-Banner mehr",
-        "description": "The display name for the extension."
+        "message": "OpenPIMS - Keine Cookie-Banner",
+        "description": "Extension display name."
     },
     "extension_description": {
-        "message": "Datenschutzfreundliche Cookie-Banner-Alternative. OpenPIMS verwaltet Ihre Einwilligungen zentral über Ihr Personal Information Management System - ohne störende Popups oder Cookie-Banner.",
-        "description": "Description of what the extension does."
+        "message": "Verwaltet Ihre Cookie-Einwilligungen zentral. Keine nervigen Banner mehr - surfen Sie ungestört.",
+        "description": "Extension description."
     }
 }

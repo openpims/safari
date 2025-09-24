@@ -1,10 +1,10 @@
 {
     "extension_name": {
-        "message": "OpenPIMS Mobile - Cookie Banner Free",
-        "description": "The display name for the extension."
+        "message": "OpenPIMS Mobile",
+        "description": "Extension display name."
     },
     "extension_description": {
-        "message": "Browse without cookie banners on iOS. OpenPIMS Mobile manages your privacy consents centrally through your Personal Information Management System - enjoy a cleaner web on iPhone and iPad.",
-        "description": "Description of what the extension does."
+        "message": "Manage cookie consents centrally. Browse without banners on iPhone and iPad.",
+        "description": "Extension description."
     }
 }
