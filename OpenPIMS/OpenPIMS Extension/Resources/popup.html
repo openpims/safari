@@ -14,6 +14,14 @@
             background-color: #f8f9fa;
             padding: 20px;
             width: 300px;
+            color: #333;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1e1e1e;
+                color: #ffffff;
+            }
         }
 
         .header {
@@ -36,6 +44,13 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
+        @media (prefers-color-scheme: dark) {
+            .login-form {
+                background: #2a2a2a;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
+        }
+
         .form-group {
             margin-bottom: 1rem;
         }
@@ -44,6 +59,13 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
+            color: #333;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            label {
+                color: #e0e0e0;
+            }
         }
 
         input {
@@ -53,6 +75,22 @@
             border-radius: 4px;
             box-sizing: border-box;
             font-size: 14px;
+            background-color: white;
+            color: #333;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            input {
+                background-color: #2d2d2d;
+                color: #ffffff;
+                border: 1px solid #4a4a4a;
+            }
+
+            input:focus {
+                outline: none;
+                border-color: #007AFF;
+                box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
+            }
         }
 
         /* Button Styles */
@@ -104,6 +142,15 @@
             word-break: break-all;
             border: 1px solid #ddd;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            color: #333;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .url-display {
+                background-color: #2a2a2a;
+                border: 1px solid #4a4a4a;
+                color: #e0e0e0;
+            }
         }
 
         .error-message {

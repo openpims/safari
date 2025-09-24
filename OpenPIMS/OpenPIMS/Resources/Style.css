@@ -10,6 +10,23 @@
     --spacing: 20px;
 }
 
+@media (prefers-color-scheme: dark) {
+    body {
+        color: #ffffff;
+        background-color: #1e1e1e;
+    }
+
+    button {
+        background-color: #007AFF;
+        color: white;
+        border: 1px solid #005bb5;
+    }
+
+    button:hover {
+        background-color: #0056CC;
+    }
+}
+
 html {
     height: 100%;
 }
