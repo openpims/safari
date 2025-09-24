@@ -1,0 +1,10 @@
+{
+    "extension_name": {
+        "message": "OpenPIMS Mobile - Ohne Cookie-Banner",
+        "description": "The display name for the extension."
+    },
+    "extension_description": {
+        "message": "Surfen ohne Cookie-Banner auf iOS. OpenPIMS Mobile verwaltet Ihre Datenschutz-Einwilligungen zentral über Ihr Personal Information Management System - genießen Sie ein sauberes Web auf iPhone und iPad.",
+        "description": "Description of what the extension does."
+    }
+}
