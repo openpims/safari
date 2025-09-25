@@ -15,7 +15,7 @@ OpenPIMS Safari Extension provides seamless integration with OpenPIMS services. 
 
 ## Demo
 
-Available on the App Store: [Coming Soon]
+Available on the App Store: https://apps.apple.com/app/openpims/id6752671294
 
 ## Other Versions
 
