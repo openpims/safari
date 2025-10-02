@@ -35,18 +35,33 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
            action == "updateStorage" {
 
             let isLoggedIn = messageDict["isLoggedIn"] as? Bool ?? false
-            let openPimsUrl = messageDict["openPimsUrl"] as? String
+            let userId = messageDict["userId"] as? String
+            let secret = messageDict["secret"] as? String
+            let appDomain = messageDict["appDomain"] as? String
 
             // Store login state for extension access
             let sharedDefaults = UserDefaults(suiteName: "group.openPIMS.shared")
             sharedDefaults?.set(isLoggedIn, forKey: "isLoggedIn")
-            if let url = openPimsUrl {
-                sharedDefaults?.set(url, forKey: "openPimsUrl")
+
+            if let uid = userId {
+                sharedDefaults?.set(uid, forKey: "userId")
             } else {
-                sharedDefaults?.removeObject(forKey: "openPimsUrl")
+                sharedDefaults?.removeObject(forKey: "userId")
             }
 
-            os_log(.default, "Updated storage: logged in = %@, URL = %@", String(isLoggedIn), openPimsUrl ?? "nil")
+            if let sec = secret {
+                sharedDefaults?.set(sec, forKey: "secret")
+            } else {
+                sharedDefaults?.removeObject(forKey: "secret")
+            }
+
+            if let domain = appDomain {
+                sharedDefaults?.set(domain, forKey: "appDomain")
+            } else {
+                sharedDefaults?.removeObject(forKey: "appDomain")
+            }
+
+            os_log(.default, "Updated storage: logged in = %@, userId = %@", String(isLoggedIn), userId ?? "nil")
         }
 
         let response = NSExtensionItem()

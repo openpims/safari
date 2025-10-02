@@ -12,17 +12,16 @@ const browserAPI = (() => {
 })();
 
 
-// Lade die gespeicherte URL und prüfe Login-Status
-browserAPI.storage.local.get(['openPimsUrl', 'isLoggedIn', 'email', 'serverUrl'], (result) => {
+// Lade die gespeicherten Daten und prüfe Login-Status
+browserAPI.storage.local.get(['userId', 'isLoggedIn', 'email', 'serverUrl'], (result) => {
     const loggedInContent = document.getElementById('loggedInContent');
     const loginForm = document.getElementById('loginForm');
     const urlElement = document.getElementById('url');
 
-    if (result.isLoggedIn && result.openPimsUrl) {
+    if (result.isLoggedIn && result.userId) {
         urlElement.innerHTML = `
             <div style="margin-bottom: 10px;">Angemeldet als: ${result.email || 'Unbekannt'}</div>
             <div style="font-size: 0.9em; color: #666;">Server: ${result.serverUrl || 'https://me.openpims.de'}</div>
-            <div style="font-size: 0.9em; color: #666;">URL: ${result.openPimsUrl}</div>
         `;
         loggedInContent.classList.remove('hidden');
         loginForm.classList.add('hidden');
@@ -86,7 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = response.data;
 
             await browserAPI.storage.local.set({
-                openPimsUrl: data.token,
+                userId: data.userId,
+                secret: data.secret,
+                appDomain: data.appDomain,
                 email: email,
                 serverUrl: serverUrl,
                 isLoggedIn: true
@@ -97,7 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 await browserAPI.runtime.sendNativeMessage("de.openpims.extension", {
                     action: "updateStorage",
                     isLoggedIn: true,
-                    openPimsUrl: data.token
+                    userId: data.userId,
+                    secret: data.secret,
+                    appDomain: data.appDomain
                 });
             } catch (nativeError) {
                 console.log("Native messaging nicht verfügbar oder fehlgeschlagen:", nativeError);
@@ -109,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('url').innerHTML = `
                 <div style="margin-bottom: 10px;">Angemeldet als: ${email}</div>
                 <div style="font-size: 0.9em; color: #666;">Server: ${serverUrl}</div>
-                <div style="font-size: 0.9em; color: #666;">URL: ${data.token}</div>
             `;
 
 
@@ -145,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // Lösche die gespeicherten Daten
-                await browserAPI.storage.local.remove(['openPimsUrl', 'isLoggedIn', 'token', 'email', 'serverUrl']);
+                await browserAPI.storage.local.remove(['userId', 'secret', 'appDomain', 'isLoggedIn', 'email', 'serverUrl']);
 
                 // Aktualisiere die Anzeige
                 const loggedInContent = document.getElementById('loggedInContent');
