@@ -1,8 +1,161 @@
 // Background Script für OpenPIMS Safari Web Extension (iOS Version)
-// NOTE: Background scripts do not work in mobile Safari extensions!
-// Header modification is handled by content.js via cookies instead.
+// Uses declarativeNetRequest to add cookies to all requests
 
-console.log('📝 Background script loaded (but not functional in mobile Safari)');
+console.log('📝 Background script loaded - using declarativeNetRequest for cookies');
+
+// Deterministic subdomain generation with daily rotation
+async function generateDeterministicSubdomain(userId, secret, domain) {
+    const dayTimestamp = Math.floor(Math.floor(Date.now() / 1000) / 86400);
+    const message = `${userId}${domain}${dayTimestamp}`;
+
+    const encoder = new TextEncoder();
+    const messageData = encoder.encode(message);
+    const secretData = encoder.encode(secret);
+
+    const key = await crypto.subtle.importKey(
+        'raw',
+        secretData,
+        { name: 'HMAC', hash: 'SHA-256' },
+        false,
+        ['sign']
+    );
+
+    const signature = await crypto.subtle.sign('HMAC', key, messageData);
+    const hashArray = Array.from(new Uint8Array(signature));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+    return hashHex.substring(0, 32);
+}
+
+// Hash function for consistent rule IDs
+function hashCode(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash;
+    }
+    return Math.abs(hash);
+}
+
+// Track domains with cookie rules
+const domainsWithCookies = new Set();
+
+// Add cookie rule for specific domain using declarativeNetRequest
+async function addCookieForDomain(domain, userId, secret, appDomain) {
+    if (!browser.declarativeNetRequest) {
+        console.error('❌ declarativeNetRequest API not available');
+        return false;
+    }
+
+    try {
+        // Generate domain-specific subdomain
+        const subdomain = await generateDeterministicSubdomain(userId, secret, domain);
+        const openPimsUrl = `https://${subdomain}.${appDomain}`;
+
+        // Generate unique rule ID based on domain (1-30000 range for dynamic rules)
+        const ruleId = (hashCode(domain) % 29999) + 1;
+
+        console.log(`🍪 Adding cookie rule for ${domain} with ID ${ruleId}`);
+
+        // Remove existing rule if any
+        await browser.declarativeNetRequest.updateDynamicRules({
+            removeRuleIds: [ruleId]
+        });
+
+        // Add new cookie rule
+        await browser.declarativeNetRequest.updateDynamicRules({
+            addRules: [{
+                "id": ruleId,
+                "priority": 1,
+                "action": {
+                    "type": "modifyHeaders",
+                    "requestHeaders": [
+                        {
+                            "header": "Cookie",
+                            "operation": "append",
+                            "value": `x-openpims=${encodeURIComponent(openPimsUrl)}`
+                        }
+                    ]
+                },
+                "condition": {
+                    "urlFilter": `||${domain}`,
+                    "resourceTypes": [
+                        "main_frame",
+                        "sub_frame",
+                        "xmlhttprequest",
+                        "other"
+                    ]
+                }
+            }]
+        });
+
+        domainsWithCookies.add(domain);
+        console.log(`✅ Cookie rule successfully added for ${domain}`);
+
+        return true;
+
+    } catch (error) {
+        console.error(`❌ Error adding cookie rule for ${domain}:`, error);
+        return false;
+    }
+}
+
+// Listen for page navigation to add cookies
+if (browser.webNavigation) {
+    browser.webNavigation.onBeforeNavigate.addListener(async (details) => {
+        // Only process main frame navigations
+        if (details.frameId !== 0) return;
+
+        try {
+            const url = new URL(details.url);
+            const domain = url.hostname;
+
+            // Skip if we already have a cookie rule for this domain
+            if (domainsWithCookies.has(domain)) {
+                return;
+            }
+
+            // Get stored credentials
+            const result = await browser.storage.local.get(['userId', 'secret', 'appDomain', 'isLoggedIn']);
+
+            if (result.isLoggedIn && result.userId && result.secret && result.appDomain) {
+                console.log(`🔄 Setting up cookie for new domain: ${domain}`);
+                await addCookieForDomain(domain, result.userId, result.secret, result.appDomain);
+            }
+        } catch (error) {
+            console.error('❌ Error in navigation listener:', error);
+        }
+    });
+}
+
+// Listen for storage changes (login/logout)
+browser.storage.onChanged.addListener(async (changes, namespace) => {
+    if (namespace === 'local' && changes.isLoggedIn) {
+        if (changes.isLoggedIn.newValue === false) {
+            // User logged out - remove all cookie rules
+            console.log('🔄 User logged out, removing all cookie rules');
+
+            if (browser.declarativeNetRequest) {
+                try {
+                    const rules = await browser.declarativeNetRequest.getDynamicRules();
+                    const ruleIds = rules.map(r => r.id);
+
+                    if (ruleIds.length > 0) {
+                        await browser.declarativeNetRequest.updateDynamicRules({
+                            removeRuleIds: ruleIds
+                        });
+                        console.log(`✅ Removed ${ruleIds.length} cookie rules`);
+                    }
+
+                    domainsWithCookies.clear();
+                } catch (error) {
+                    console.error('❌ Error removing cookie rules:', error);
+                }
+            }
+        }
+    }
+});
 
 // Hilfsfunktion für saubere Fehler
 function createCleanError(message, status = null) {
