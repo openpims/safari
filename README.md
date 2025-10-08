@@ -17,7 +17,9 @@ OpenPIMS Safari Extension blocks cookie banners by modifying the User-Agent head
 
 ## Demo
 
-Available on the App Store: https://apps.apple.com/app/openpims/id6752671294
+Available on the App Store:
+- **macOS**: https://apps.apple.com/app/openpims/id6752671294
+- **iOS**: https://apps.apple.com/app/openpims-mobil/id6752672591
 
 ## Other Versions
 
