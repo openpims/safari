@@ -71,10 +71,12 @@ The extension generates domain-specific subdomains using HMAC-SHA256:
 ```json
 {
     "userId": "user123",
-    "token": "secret_key_for_hmac",
-    "domain": "openpims.de"
+    "secret": "secret_key_for_hmac",
+    "appDomain": "openpims.de"
 }
 ```
+
+**Note**: The token/secret is used exclusively for HMAC-SHA256 subdomain generation and is never displayed in the user interface.
 
 ### Testing the API
 ```bash
@@ -133,7 +135,7 @@ Stefan Böck
 
 ## Version
 
-1.1 (Build 11)
+1.1 (Build 12)
 
 ## License
 
