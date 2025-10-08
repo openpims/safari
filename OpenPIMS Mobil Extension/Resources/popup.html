@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenPIMS Status</title>
+    <link rel="stylesheet" href="popup.css">
+    <script type="module" src="popup.js"></script>
+    <style>
+        /* Allgemeine Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            background-color: #f8f9fa;
+            padding: 20px;
+            width: 300px;
+            color: #333;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1e1e1e;
+                color: #ffffff;
+            }
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+        }
+
+        /* Login Form Styles */
+        .login-form {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .login-form {
+                background: #2a2a2a;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            label {
+                color: #e0e0e0;
+            }
+        }
+
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+            background-color: white;
+            color: #333;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            input {
+                background-color: #2d2d2d;
+                color: #ffffff;
+                border: 1px solid #4a4a4a;
+            }
+
+            input:focus {
+                outline: none;
+                border-color: #007AFF;
+                box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
+            }
+        }
+
+        /* Button Styles */
+        .button {
+            margin-top: 15px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            color: white;
+            font-size: 14px;
+        }
+
+        .login-button {
+            background-color: #007AFF;
+        }
+
+        .login-button:hover {
+            background-color: #0056CC;
+        }
+
+        .logout-button {
+            background-color: transparent;
+            color: #666;
+            border: 1px solid #ddd;
+            padding: 6px 12px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .logout-button:hover {
+            background-color: #f5f5f5;
+            color: #333;
+            border-color: #ccc;
+        }
+
+        .button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        /* Content Styles */
+        .url-display {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            word-break: break-all;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            color: #333;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .url-display {
+                background-color: #2a2a2a;
+                border: 1px solid #4a4a4a;
+                color: #e0e0e0;
+            }
+        }
+
+        .error-message {
+            color: #d32f2f;
+            background-color: #ffebee;
+            border: 1px solid #ffcdd2;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .error-message.visible {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="images/openpims.png" alt="OpenPIMS Logo">
+        <h2 style="margin: 0;">OpenPIMS</h2>
+    </div>
+
+    <div id="loggedInContent" class="hidden">
+        <div class="url-display" id="url"></div>
+        <button id="logoutButton" class="button logout-button">Ausloggen</button>
+    </div>
+
+    <div id="loginForm" class="login-form">
+        <div class="form-group">
+            <label for="serverUrl">Server-URL:</label>
+            <input type="url" id="serverUrl" name="serverUrl" value="https://me.openpims.de">
+        </div>
+        <div class="form-group">
+            <label for="email">E-Mail:</label>
+            <input type="email" id="email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="password">Passwort:</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <button id="loginButton" type="button" class="button login-button">Anmelden</button>
+        <div id="errorMessage" class="error-message"></div>
+    </div>
+</body>
+</html>

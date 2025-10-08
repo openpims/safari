@@ -1,0 +1,10 @@
+{
+    "extension_name": {
+        "message": "OpenPIMS - No Cookie Banners",
+        "description": "Extension display name."
+    },
+    "extension_description": {
+        "message": "Manage cookie consents centrally. Browse without annoying popups - enjoy a cleaner web experience.",
+        "description": "Extension description."
+    }
+}

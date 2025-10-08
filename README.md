@@ -4,7 +4,7 @@ Automatic cookie banner blocking through domain-specific HMAC-SHA256 subdomain g
 
 ## Description
 
-OpenPIMS Safari Extension blocks cookie banners by generating unique, domain-specific URLs using deterministic HMAC-SHA256 hashing. Each website you visit gets its own unique OpenPIMS identifier that rotates daily for enhanced privacy.
+OpenPIMS Safari Extension blocks cookie banners by modifying the User-Agent header with unique, domain-specific URLs using deterministic HMAC-SHA256 hashing. Each website you visit gets its own unique OpenPIMS identifier that rotates daily for enhanced privacy.
 
 ## Key Features
 
@@ -35,9 +35,10 @@ Available on the App Store: https://apps.apple.com/app/openpims/id6752671294
 
 ### Development
 1. Clone or download this repository
-2. Open `OpenPIMS Safari Extension/OpenPIMS Safari Extension.xcodeproj` in Xcode
-3. Build and run the project
-4. Enable the extension in Safari → Settings → Extensions
+2. Open `OpenPIMS.xcodeproj` in Xcode
+3. Select scheme: "OpenPIMS" (macOS) or "OpenPIMS Mobil" (iOS)
+4. Build and run the project
+5. Enable the extension in Safari → Settings → Extensions
 
 ## Usage
 
@@ -57,16 +58,14 @@ The extension generates domain-specific subdomains using HMAC-SHA256:
 - **Result**: `https://{subdomain}.openpims.de` unique per domain
 
 ### Platform Implementation
-- **Desktop Safari**: Uses declarativeNetRequest for User-Agent modification, content script overrides for headers
-- **Mobile Safari**: Content script only implementation with fetch/XMLHttpRequest overrides
+- **Desktop Safari**: Uses declarativeNetRequest for User-Agent modification
+- **Mobile Safari**: Uses WKWebView customUserAgent for User-Agent modification
 
 ### Platform Capabilities
 | Feature | Safari Desktop | Safari Mobile | Chromium | Firefox |
 |---------|----------------|---------------|----------|---------|
-| X-OpenPIMS Headers | ✅ | ✅ | ✅ | ✅ |
-| Cookie Injection | ❌ | ✅ | ✅ | ✅ |
-| User-Agent Modification | ✅ Domain-specific | ❌ | ✅ | ✅ |
-| Implementation | declarativeNetRequest + content | content script only | Manifest V3 | Manifest V2 |
+| User-Agent Modification | ✅ Domain-specific | ✅ Global | ✅ | ✅ |
+| Implementation | declarativeNetRequest | WKWebView | Manifest V3 | Manifest V2 |
 
 ### API Response Format
 ```json
@@ -82,15 +81,43 @@ The extension generates domain-specific subdomains using HMAC-SHA256:
 curl -u "email@example.com:password" https://me.openpims.de
 ```
 
-## Files
+## Project Structure
 
-- `manifest.json` - Safari Web Extension manifest
-- `background.js` - Background script with HMAC subdomain generation
-- `action.html` - Popup interface (300px width)
-- `options.js` - Login flow and storage management
-- `styles.css` - Responsive popup styling
-- `openpims.png` - Extension icon
-- `content.js` - Content script for header/cookie injection
+```
+safari/
+├── OpenPIMS.xcodeproj/              # Xcode project
+├── OpenPIMS/                        # macOS App
+│   ├── ViewController.swift         # Main app view controller
+│   ├── AppDelegate.swift            # App lifecycle management
+│   └── Resources/                   # App resources and UI
+├── OpenPIMS Extension/              # macOS Extension
+│   └── Resources/
+│       ├── manifest.json            # Extension manifest
+│       ├── background.js            # HMAC subdomain + declarativeNetRequest
+│       ├── popup.html               # Popup UI
+│       ├── popup.js                 # Login flow
+│       ├── popup.css                # Popup styling
+│       ├── content.js               # Logging only
+│       └── images/                  # Extension icons
+├── OpenPIMS Mobil/                  # iOS App
+│   ├── ViewController.swift         # WKWebView + User-Agent setup
+│   ├── AppDelegate.swift            # App lifecycle
+│   ├── SceneDelegate.swift          # Scene lifecycle
+│   └── Resources/                   # App resources and UI
+├── OpenPIMS Mobil Extension/        # iOS Extension
+│   └── Resources/
+│       ├── manifest.json            # Extension manifest (persistent: false)
+│       ├── background.js            # Shared with macOS
+│       ├── popup.html               # Shared with macOS
+│       ├── popup.js                 # Shared with macOS
+│       ├── popup.css                # Shared with macOS
+│       ├── content.js               # Logging only
+│       └── images/                  # Extension icons
+├── README.md
+└── .gitignore
+```
+
+**Note**: macOS and iOS extensions share the same codebase with minimal platform-specific differences.
 
 ## Security
 
@@ -106,7 +133,7 @@ Stefan Böck
 
 ## Version
 
-0.1.0
+1.1 (Build 11)
 
 ## License
 

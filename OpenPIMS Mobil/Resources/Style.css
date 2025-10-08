@@ -1,0 +1,174 @@
+* {
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    cursor: default;
+}
+
+:root {
+    color-scheme: light dark;
+
+    --spacing: 20px;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: var(--spacing);
+    margin: 0 calc(var(--spacing) * 2);
+    height: 100%;
+
+    font: -apple-system-short-body;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.header h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+    .header h2 {
+        color: #fff;
+    }
+}
+
+.auth-section {
+    width: 100%;
+    max-width: 300px;
+    margin-top: var(--spacing);
+}
+
+.auth-section h3 {
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.auth-section input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    -webkit-user-select: text;
+    cursor: text;
+}
+
+.auth-section input:focus {
+    outline: none;
+    border-color: #007AFF;
+}
+
+.auth-section button {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    background-color: #007AFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.auth-section button:hover {
+    background-color: #0056CC;
+}
+
+.auth-section button:active {
+    background-color: #004BB5;
+}
+
+#logout-btn {
+    background-color: #FF3B30;
+}
+
+#logout-btn:hover {
+    background-color: #D70015;
+}
+
+#logout-btn:active {
+    background-color: #C20000;
+}
+
+.error-message {
+    color: #d32f2f;
+    background-color: #ffebee;
+    border: 1px solid #ffcdd2;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    display: none;
+}
+
+/* Ensure logout section is hidden by default */
+#logout-section {
+    display: none !important;
+}
+
+/* Show logout section when it has the visible class */
+#logout-section.visible {
+    display: block !important;
+}
+
+/* Ensure login section is visible by default */
+#login-section {
+    display: block !important;
+}
+
+/* Hide login section when it has the hidden class */
+#login-section.hidden {
+    display: none !important;
+}
+
+.server-info {
+    font-size: 14px;
+    color: #666;
+    margin: 8px 0;
+    word-break: break-all;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    .auth-section input {
+        background-color: #2C2C2E;
+        border-color: #48484A;
+        color: white;
+    }
+
+    .auth-section input:focus {
+        border-color: #0A84FF;
+    }
+
+    .error-message {
+        color: #f44336;
+        background-color: #1a1a1a;
+        border-color: #333;
+    }
+
+    .server-info {
+        color: #999;
+    }
+}

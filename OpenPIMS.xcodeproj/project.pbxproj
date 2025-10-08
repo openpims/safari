@@ -1,0 +1,1335 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AF310A292E7B573400721E0E /* OpenPIMS Mobil Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AF310A282E7B573400721E0E /* OpenPIMS Mobil Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AFCD84502E744943003C6DE1 /* OpenPIMS Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AFCD844F2E744943003C6DE1 /* OpenPIMS Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AF310A132E7B573400721E0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AFCD84152E744942003C6DE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF3109F52E7B573300721E0E;
+			remoteInfo = "OpenPIMS Mobil";
+		};
+		AF310A1D2E7B573400721E0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AFCD84152E744942003C6DE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF3109F52E7B573300721E0E;
+			remoteInfo = "OpenPIMS Mobil";
+		};
+		AF310A2A2E7B573400721E0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AFCD84152E744942003C6DE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF310A272E7B573400721E0E;
+			remoteInfo = "OpenPIMS Mobil Extension";
+		};
+		AFCD843A2E744943003C6DE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AFCD84152E744942003C6DE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AFCD841C2E744942003C6DE1;
+			remoteInfo = OpenPIMS;
+		};
+		AFCD84442E744943003C6DE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AFCD84152E744942003C6DE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AFCD841C2E744942003C6DE1;
+			remoteInfo = OpenPIMS;
+		};
+		AFCD84512E744943003C6DE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AFCD84152E744942003C6DE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AFCD844E2E744943003C6DE1;
+			remoteInfo = "OpenPIMS Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AF310A472E7B573400721E0E /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AF310A292E7B573400721E0E /* OpenPIMS Mobil Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFCD846F2E744943003C6DE1 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AFCD84502E744943003C6DE1 /* OpenPIMS Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AF3109E32E7B53F000721E0E /* UniformTypeIdentifiers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniformTypeIdentifiers.framework; path = System/Library/Frameworks/UniformTypeIdentifiers.framework; sourceTree = SDKROOT; };
+		AF3109F62E7B573300721E0E /* OpenPIMS Mobil.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OpenPIMS Mobil.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF310A122E7B573400721E0E /* OpenPIMS MobilTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OpenPIMS MobilTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF310A1C2E7B573400721E0E /* OpenPIMS MobilUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OpenPIMS MobilUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF310A282E7B573400721E0E /* OpenPIMS Mobil Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "OpenPIMS Mobil Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFCD841D2E744942003C6DE1 /* OpenPIMS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenPIMS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFCD84392E744943003C6DE1 /* OpenPIMSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenPIMSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFCD84432E744943003C6DE1 /* OpenPIMSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenPIMSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFCD844F2E744943003C6DE1 /* OpenPIMS Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "OpenPIMS Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AF310A422E7B573400721E0E /* Exceptions for "OpenPIMS Mobil" folder in "OpenPIMS Mobil" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AF3109F52E7B573300721E0E /* OpenPIMS Mobil */;
+		};
+		AF310A462E7B573400721E0E /* Exceptions for "OpenPIMS Mobil Extension" folder in "OpenPIMS Mobil Extension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AF310A272E7B573400721E0E /* OpenPIMS Mobil Extension */;
+		};
+		AFCD84692E744943003C6DE1 /* Exceptions for "OpenPIMS Extension" folder in "OpenPIMS Extension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AFCD844E2E744943003C6DE1 /* OpenPIMS Extension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		AF3109F72E7B573300721E0E /* OpenPIMS Mobil */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AF310A422E7B573400721E0E /* Exceptions for "OpenPIMS Mobil" folder in "OpenPIMS Mobil" target */,
+			);
+			path = "OpenPIMS Mobil";
+			sourceTree = "<group>";
+		};
+		AF310A152E7B573400721E0E /* OpenPIMS MobilTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "OpenPIMS MobilTests";
+			sourceTree = "<group>";
+		};
+		AF310A1F2E7B573400721E0E /* OpenPIMS MobilUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "OpenPIMS MobilUITests";
+			sourceTree = "<group>";
+		};
+		AF310A2C2E7B573400721E0E /* OpenPIMS Mobil Extension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AF310A462E7B573400721E0E /* Exceptions for "OpenPIMS Mobil Extension" folder in "OpenPIMS Mobil Extension" target */,
+			);
+			explicitFolders = (
+				Resources/_locales,
+				Resources/images,
+			);
+			path = "OpenPIMS Mobil Extension";
+			sourceTree = "<group>";
+		};
+		AFCD841F2E744942003C6DE1 /* OpenPIMS */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = OpenPIMS;
+			sourceTree = "<group>";
+		};
+		AFCD843C2E744943003C6DE1 /* OpenPIMSTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = OpenPIMSTests;
+			sourceTree = "<group>";
+		};
+		AFCD84462E744943003C6DE1 /* OpenPIMSUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = OpenPIMSUITests;
+			sourceTree = "<group>";
+		};
+		AFCD84532E744943003C6DE1 /* OpenPIMS Extension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AFCD84692E744943003C6DE1 /* Exceptions for "OpenPIMS Extension" folder in "OpenPIMS Extension" target */,
+			);
+			explicitFolders = (
+				Resources/_locales,
+				Resources/images,
+			);
+			path = "OpenPIMS Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AF3109F32E7B573300721E0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF310A0F2E7B573400721E0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF310A192E7B573400721E0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF310A252E7B573400721E0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFCD841A2E744942003C6DE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFCD84362E744943003C6DE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFCD84402E744943003C6DE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFCD844C2E744943003C6DE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AF3109E22E7B53F000721E0E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF3109E32E7B53F000721E0E /* UniformTypeIdentifiers.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AFCD84142E744942003C6DE1 = {
+			isa = PBXGroup;
+			children = (
+				AFCD841F2E744942003C6DE1 /* OpenPIMS */,
+				AFCD843C2E744943003C6DE1 /* OpenPIMSTests */,
+				AFCD84462E744943003C6DE1 /* OpenPIMSUITests */,
+				AFCD84532E744943003C6DE1 /* OpenPIMS Extension */,
+				AF3109F72E7B573300721E0E /* OpenPIMS Mobil */,
+				AF310A152E7B573400721E0E /* OpenPIMS MobilTests */,
+				AF310A1F2E7B573400721E0E /* OpenPIMS MobilUITests */,
+				AF310A2C2E7B573400721E0E /* OpenPIMS Mobil Extension */,
+				AF3109E22E7B53F000721E0E /* Frameworks */,
+				AFCD841E2E744942003C6DE1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AFCD841E2E744942003C6DE1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AFCD841D2E744942003C6DE1 /* OpenPIMS.app */,
+				AFCD84392E744943003C6DE1 /* OpenPIMSTests.xctest */,
+				AFCD84432E744943003C6DE1 /* OpenPIMSUITests.xctest */,
+				AFCD844F2E744943003C6DE1 /* OpenPIMS Extension.appex */,
+				AF3109F62E7B573300721E0E /* OpenPIMS Mobil.app */,
+				AF310A122E7B573400721E0E /* OpenPIMS MobilTests.xctest */,
+				AF310A1C2E7B573400721E0E /* OpenPIMS MobilUITests.xctest */,
+				AF310A282E7B573400721E0E /* OpenPIMS Mobil Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AF3109F52E7B573300721E0E /* OpenPIMS Mobil */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF310A482E7B573400721E0E /* Build configuration list for PBXNativeTarget "OpenPIMS Mobil" */;
+			buildPhases = (
+				AF3109F22E7B573300721E0E /* Sources */,
+				AF3109F32E7B573300721E0E /* Frameworks */,
+				AF3109F42E7B573300721E0E /* Resources */,
+				AF310A472E7B573400721E0E /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF310A2B2E7B573400721E0E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AF3109F72E7B573300721E0E /* OpenPIMS Mobil */,
+			);
+			name = "OpenPIMS Mobil";
+			packageProductDependencies = (
+			);
+			productName = "OpenPIMS Mobil";
+			productReference = AF3109F62E7B573300721E0E /* OpenPIMS Mobil.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AF310A112E7B573400721E0E /* OpenPIMS MobilTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF310A4B2E7B573400721E0E /* Build configuration list for PBXNativeTarget "OpenPIMS MobilTests" */;
+			buildPhases = (
+				AF310A0E2E7B573400721E0E /* Sources */,
+				AF310A0F2E7B573400721E0E /* Frameworks */,
+				AF310A102E7B573400721E0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF310A142E7B573400721E0E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AF310A152E7B573400721E0E /* OpenPIMS MobilTests */,
+			);
+			name = "OpenPIMS MobilTests";
+			packageProductDependencies = (
+			);
+			productName = "OpenPIMS MobilTests";
+			productReference = AF310A122E7B573400721E0E /* OpenPIMS MobilTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AF310A1B2E7B573400721E0E /* OpenPIMS MobilUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF310A4E2E7B573400721E0E /* Build configuration list for PBXNativeTarget "OpenPIMS MobilUITests" */;
+			buildPhases = (
+				AF310A182E7B573400721E0E /* Sources */,
+				AF310A192E7B573400721E0E /* Frameworks */,
+				AF310A1A2E7B573400721E0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF310A1E2E7B573400721E0E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AF310A1F2E7B573400721E0E /* OpenPIMS MobilUITests */,
+			);
+			name = "OpenPIMS MobilUITests";
+			packageProductDependencies = (
+			);
+			productName = "OpenPIMS MobilUITests";
+			productReference = AF310A1C2E7B573400721E0E /* OpenPIMS MobilUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		AF310A272E7B573400721E0E /* OpenPIMS Mobil Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF310A432E7B573400721E0E /* Build configuration list for PBXNativeTarget "OpenPIMS Mobil Extension" */;
+			buildPhases = (
+				AF310A242E7B573400721E0E /* Sources */,
+				AF310A252E7B573400721E0E /* Frameworks */,
+				AF310A262E7B573400721E0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				AF310A2C2E7B573400721E0E /* OpenPIMS Mobil Extension */,
+			);
+			name = "OpenPIMS Mobil Extension";
+			packageProductDependencies = (
+			);
+			productName = "OpenPIMS Mobil Extension";
+			productReference = AF310A282E7B573400721E0E /* OpenPIMS Mobil Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		AFCD841C2E744942003C6DE1 /* OpenPIMS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFCD84702E744943003C6DE1 /* Build configuration list for PBXNativeTarget "OpenPIMS" */;
+			buildPhases = (
+				AFCD84192E744942003C6DE1 /* Sources */,
+				AFCD841A2E744942003C6DE1 /* Frameworks */,
+				AFCD841B2E744942003C6DE1 /* Resources */,
+				AFCD846F2E744943003C6DE1 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AFCD84522E744943003C6DE1 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AFCD841F2E744942003C6DE1 /* OpenPIMS */,
+			);
+			name = OpenPIMS;
+			packageProductDependencies = (
+			);
+			productName = OpenPIMS;
+			productReference = AFCD841D2E744942003C6DE1 /* OpenPIMS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AFCD84382E744943003C6DE1 /* OpenPIMSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFCD84732E744943003C6DE1 /* Build configuration list for PBXNativeTarget "OpenPIMSTests" */;
+			buildPhases = (
+				AFCD84352E744943003C6DE1 /* Sources */,
+				AFCD84362E744943003C6DE1 /* Frameworks */,
+				AFCD84372E744943003C6DE1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AFCD843B2E744943003C6DE1 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AFCD843C2E744943003C6DE1 /* OpenPIMSTests */,
+			);
+			name = OpenPIMSTests;
+			packageProductDependencies = (
+			);
+			productName = OpenPIMSTests;
+			productReference = AFCD84392E744943003C6DE1 /* OpenPIMSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AFCD84422E744943003C6DE1 /* OpenPIMSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFCD84762E744943003C6DE1 /* Build configuration list for PBXNativeTarget "OpenPIMSUITests" */;
+			buildPhases = (
+				AFCD843F2E744943003C6DE1 /* Sources */,
+				AFCD84402E744943003C6DE1 /* Frameworks */,
+				AFCD84412E744943003C6DE1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AFCD84452E744943003C6DE1 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AFCD84462E744943003C6DE1 /* OpenPIMSUITests */,
+			);
+			name = OpenPIMSUITests;
+			packageProductDependencies = (
+			);
+			productName = OpenPIMSUITests;
+			productReference = AFCD84432E744943003C6DE1 /* OpenPIMSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		AFCD844E2E744943003C6DE1 /* OpenPIMS Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFCD846A2E744943003C6DE1 /* Build configuration list for PBXNativeTarget "OpenPIMS Extension" */;
+			buildPhases = (
+				AFCD844B2E744943003C6DE1 /* Sources */,
+				AFCD844C2E744943003C6DE1 /* Frameworks */,
+				AFCD844D2E744943003C6DE1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				AFCD84532E744943003C6DE1 /* OpenPIMS Extension */,
+			);
+			name = "OpenPIMS Extension";
+			packageProductDependencies = (
+			);
+			productName = "OpenPIMS Extension";
+			productReference = AFCD844F2E744943003C6DE1 /* OpenPIMS Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AFCD84152E744942003C6DE1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					AF3109F52E7B573300721E0E = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					AF310A112E7B573400721E0E = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = AF3109F52E7B573300721E0E;
+					};
+					AF310A1B2E7B573400721E0E = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = AF3109F52E7B573300721E0E;
+					};
+					AF310A272E7B573400721E0E = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					AFCD841C2E744942003C6DE1 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					AFCD84382E744943003C6DE1 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = AFCD841C2E744942003C6DE1;
+					};
+					AFCD84422E744943003C6DE1 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = AFCD841C2E744942003C6DE1;
+					};
+					AFCD844E2E744943003C6DE1 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+				};
+			};
+			buildConfigurationList = AFCD84182E744942003C6DE1 /* Build configuration list for PBXProject "OpenPIMS" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AFCD84142E744942003C6DE1;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = AFCD841E2E744942003C6DE1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AFCD841C2E744942003C6DE1 /* OpenPIMS */,
+				AFCD84382E744943003C6DE1 /* OpenPIMSTests */,
+				AFCD84422E744943003C6DE1 /* OpenPIMSUITests */,
+				AFCD844E2E744943003C6DE1 /* OpenPIMS Extension */,
+				AF3109F52E7B573300721E0E /* OpenPIMS Mobil */,
+				AF310A112E7B573400721E0E /* OpenPIMS MobilTests */,
+				AF310A1B2E7B573400721E0E /* OpenPIMS MobilUITests */,
+				AF310A272E7B573400721E0E /* OpenPIMS Mobil Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AF3109F42E7B573300721E0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF310A102E7B573400721E0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF310A1A2E7B573400721E0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF310A262E7B573400721E0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFCD841B2E744942003C6DE1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFCD84372E744943003C6DE1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFCD84412E744943003C6DE1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFCD844D2E744943003C6DE1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AF3109F22E7B573300721E0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF310A0E2E7B573400721E0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF310A182E7B573400721E0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF310A242E7B573400721E0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFCD84192E744942003C6DE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFCD84352E744943003C6DE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFCD843F2E744943003C6DE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFCD844B2E744943003C6DE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AF310A142E7B573400721E0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF3109F52E7B573300721E0E /* OpenPIMS Mobil */;
+			targetProxy = AF310A132E7B573400721E0E /* PBXContainerItemProxy */;
+		};
+		AF310A1E2E7B573400721E0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF3109F52E7B573300721E0E /* OpenPIMS Mobil */;
+			targetProxy = AF310A1D2E7B573400721E0E /* PBXContainerItemProxy */;
+		};
+		AF310A2B2E7B573400721E0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF310A272E7B573400721E0E /* OpenPIMS Mobil Extension */;
+			targetProxy = AF310A2A2E7B573400721E0E /* PBXContainerItemProxy */;
+		};
+		AFCD843B2E744943003C6DE1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AFCD841C2E744942003C6DE1 /* OpenPIMS */;
+			targetProxy = AFCD843A2E744943003C6DE1 /* PBXContainerItemProxy */;
+		};
+		AFCD84452E744943003C6DE1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AFCD841C2E744942003C6DE1 /* OpenPIMS */;
+			targetProxy = AFCD84442E744943003C6DE1 /* PBXContainerItemProxy */;
+		};
+		AFCD84522E744943003C6DE1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AFCD844E2E744943003C6DE1 /* OpenPIMS Extension */;
+			targetProxy = AFCD84512E744943003C6DE1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AF310A442E7B573400721E0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				DEVELOPMENT_TEAM = 63NYRW5SDP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "OpenPIMS Mobil Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "OpenPIMS Mobil Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "openPIMS.OpenPIMS-Mobil.Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AF310A452E7B573400721E0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				DEVELOPMENT_TEAM = 63NYRW5SDP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "OpenPIMS Mobil Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "OpenPIMS Mobil Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "openPIMS.OpenPIMS-Mobil.Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AF310A492E7B573400721E0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				DEVELOPMENT_TEAM = 63NYRW5SDP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "OpenPIMS Mobil/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "OpenPIMS Mobil";
+				INFOPLIST_KEY_CFBundleIconName = AppIcon;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "openPIMS.OpenPIMS-Mobil";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AF310A4A2E7B573400721E0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				DEVELOPMENT_TEAM = 63NYRW5SDP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "OpenPIMS Mobil/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "OpenPIMS Mobil";
+				INFOPLIST_KEY_CFBundleIconName = AppIcon;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "openPIMS.OpenPIMS-Mobil";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AF310A4C2E7B573400721E0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "openPIMS.OpenPIMS-MobilTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenPIMS Mobil.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OpenPIMS Mobil";
+			};
+			name = Debug;
+		};
+		AF310A4D2E7B573400721E0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "openPIMS.OpenPIMS-MobilTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenPIMS Mobil.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OpenPIMS Mobil";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AF310A4F2E7B573400721E0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "openPIMS.OpenPIMS-MobilUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "OpenPIMS Mobil";
+			};
+			name = Debug;
+		};
+		AF310A502E7B573400721E0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "openPIMS.OpenPIMS-MobilUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "OpenPIMS Mobil";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AFCD846B2E744943003C6DE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "OpenPIMS Extension/OpenPIMS_Extension.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				DEVELOPMENT_TEAM = 63NYRW5SDP;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "OpenPIMS Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "OpenPIMS Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = OpenPIMS.OpenPIMS.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AFCD846C2E744943003C6DE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "OpenPIMS Extension/OpenPIMS_Extension.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				DEVELOPMENT_TEAM = 63NYRW5SDP;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "OpenPIMS Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "OpenPIMS Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = OpenPIMS.OpenPIMS.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		AFCD846D2E744943003C6DE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AFCD846E2E744943003C6DE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		AFCD84712E744943003C6DE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OpenPIMS/OpenPIMS.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 14;
+				DEVELOPMENT_TEAM = 63NYRW5SDP;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = OpenPIMS;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = OpenPIMS.OpenPIMS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AFCD84722E744943003C6DE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OpenPIMS/OpenPIMS.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 14;
+				DEVELOPMENT_TEAM = 63NYRW5SDP;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = OpenPIMS;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.1;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = OpenPIMS.OpenPIMS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		AFCD84742E744943003C6DE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = OpenPIMS.OpenPIMSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenPIMS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OpenPIMS";
+			};
+			name = Debug;
+		};
+		AFCD84752E744943003C6DE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = OpenPIMS.OpenPIMSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenPIMS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OpenPIMS";
+			};
+			name = Release;
+		};
+		AFCD84772E744943003C6DE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = OpenPIMS.OpenPIMSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = OpenPIMS;
+			};
+			name = Debug;
+		};
+		AFCD84782E744943003C6DE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = OpenPIMS.OpenPIMSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = OpenPIMS;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AF310A432E7B573400721E0E /* Build configuration list for PBXNativeTarget "OpenPIMS Mobil Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF310A442E7B573400721E0E /* Debug */,
+				AF310A452E7B573400721E0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF310A482E7B573400721E0E /* Build configuration list for PBXNativeTarget "OpenPIMS Mobil" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF310A492E7B573400721E0E /* Debug */,
+				AF310A4A2E7B573400721E0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF310A4B2E7B573400721E0E /* Build configuration list for PBXNativeTarget "OpenPIMS MobilTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF310A4C2E7B573400721E0E /* Debug */,
+				AF310A4D2E7B573400721E0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF310A4E2E7B573400721E0E /* Build configuration list for PBXNativeTarget "OpenPIMS MobilUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF310A4F2E7B573400721E0E /* Debug */,
+				AF310A502E7B573400721E0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFCD84182E744942003C6DE1 /* Build configuration list for PBXProject "OpenPIMS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFCD846D2E744943003C6DE1 /* Debug */,
+				AFCD846E2E744943003C6DE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFCD846A2E744943003C6DE1 /* Build configuration list for PBXNativeTarget "OpenPIMS Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFCD846B2E744943003C6DE1 /* Debug */,
+				AFCD846C2E744943003C6DE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFCD84702E744943003C6DE1 /* Build configuration list for PBXNativeTarget "OpenPIMS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFCD84712E744943003C6DE1 /* Debug */,
+				AFCD84722E744943003C6DE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFCD84732E744943003C6DE1 /* Build configuration list for PBXNativeTarget "OpenPIMSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFCD84742E744943003C6DE1 /* Debug */,
+				AFCD84752E744943003C6DE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFCD84762E744943003C6DE1 /* Build configuration list for PBXNativeTarget "OpenPIMSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFCD84772E744943003C6DE1 /* Debug */,
+				AFCD84782E744943003C6DE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AFCD84152E744942003C6DE1 /* Project object */;
+}

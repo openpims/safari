@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="../Style.css">
+</head>
+<body>
+    <div class="header">
+        <img src="openpims.svg" width="64" height="64" alt="OpenPIMS Logo">
+        <h2>OpenPIMS</h2>
+    </div>
+
+    <p id="settings-info">You can turn on OpenPIMS Mobil's Safari extension in Settings.</p>
+
+
+    <div class="auth-section">
+        <div id="login-section" style="display: block;">
+            <h3>Login</h3>
+            <input type="url" id="server-url" placeholder="Server-URL" value="https://me.openpims.de">
+            <input type="email" id="email" placeholder="E-Mail">
+            <input type="password" id="password" placeholder="Passwort">
+            <button id="login-btn">Anmelden</button>
+            <div id="error-message" class="error-message" style="display: none;"></div>
+        </div>
+
+        <div id="logout-section" style="display: none;">
+            <h3>Angemeldet als: <span id="user-email"></span></h3>
+            <div class="server-info">Server: <span id="server-info"></span></div>
+            <button id="logout-btn">Ausloggen</button>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginSection = document.getElementById('login-section');
+            const logoutSection = document.getElementById('logout-section');
+            const loginBtn = document.getElementById('login-btn');
+            const logoutBtn = document.getElementById('logout-btn');
+            const serverUrlInput = document.getElementById('server-url');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const errorMessage = document.getElementById('error-message');
+            const userEmailSpan = document.getElementById('user-email');
+            const serverInfoSpan = document.getElementById('server-info');
+
+
+            // Ensure initial state is set correctly
+            loginSection.classList.remove('hidden');
+            logoutSection.classList.remove('visible');
+            errorMessage.style.display = 'none';
+
+            // Check if user is already logged in
+            const savedData = localStorage.getItem('openPimsData');
+            if (savedData) {
+                try {
+                    const data = JSON.parse(savedData);
+                    if (data && data.isLoggedIn && data.token) {
+                        showLoggedInState(data);
+                    } else {
+                        localStorage.removeItem('openPimsData');
+                        showLoginState();
+                    }
+                } catch (e) {
+                    localStorage.removeItem('openPimsData');
+                    showLoginState();
+                }
+            } else {
+                showLoginState();
+            }
+
+            loginBtn.addEventListener('click', async function(e) {
+                e.preventDefault();
+
+                const serverUrl = serverUrlInput.value.trim();
+                const email = emailInput.value.trim();
+                const password = passwordInput.value.trim();
+
+                // Reset error message
+                errorMessage.textContent = '';
+                errorMessage.style.display = 'none';
+
+                if (!serverUrl || !email || !password) {
+                    showError('Bitte füllen Sie alle Felder aus.');
+                    return;
+                }
+                // Disable button during login
+                loginBtn.disabled = true;
+                loginBtn.textContent = 'Anmeldung läuft...';
+
+                try {
+                    // Check if webkit message handlers are available
+                    if (!window.webkit || !window.webkit.messageHandlers || !window.webkit.messageHandlers.controller) {
+                        showError('WebKit message handlers not available');
+                        loginBtn.disabled = false;
+                        loginBtn.textContent = 'Anmelden';
+                        return;
+                    }
+
+                    // Set up global response handler BEFORE sending message
+                    const response = await new Promise((resolve, reject) => {
+                        const timeoutId = setTimeout(() => {
+                            delete window.handleLoginResponse;
+                            reject(new Error('Login-Timeout (30s)'));
+                        }, 30000);
+
+                        // Set up global response handler
+                        window.handleLoginResponse = function(responseData) {
+                            clearTimeout(timeoutId);
+                            delete window.handleLoginResponse;
+                            resolve(responseData);
+                        };
+
+                        // Send login request to Swift app AFTER setting up handler
+                        window.webkit.messageHandlers.controller.postMessage({
+                            action: 'login',
+                            serverUrl: serverUrl,
+                            email: email,
+                            password: password
+                        });
+                    });
+
+
+                    if (response && response.success) {
+                        const loginData = {
+                            email: email,
+                            serverUrl: serverUrl,
+                            token: response.token,
+                            isLoggedIn: true
+                        };
+
+                        // Store login data
+                        localStorage.setItem('openPimsData', JSON.stringify(loginData));
+
+                        // Show logged in state
+                        showLoggedInState(loginData);
+
+                        // Clear form
+                        emailInput.value = '';
+                        passwordInput.value = '';
+
+                    } else {
+                        showError(response.error || 'Login fehlgeschlagen');
+                        passwordInput.value = '';
+                        passwordInput.focus();
+                    }
+                } catch (error) {
+                    console.error('Login error:', error);
+                    showError(error.message || 'Verbindungsfehler');
+                    passwordInput.value = '';
+                    passwordInput.focus();
+                } finally {
+                    // Re-enable button
+                    setTimeout(() => {
+                        loginBtn.disabled = false;
+                        loginBtn.textContent = 'Anmelden';
+                    }, 100);
+                }
+            });
+
+            logoutBtn.addEventListener('click', function() {
+                // Clear stored data
+                localStorage.removeItem('openPimsData');
+
+                // Clear form inputs
+                emailInput.value = '';
+                passwordInput.value = '';
+                errorMessage.textContent = '';
+                errorMessage.style.display = 'none';
+
+                showLoginState();
+
+                // Send logout message to Swift app if available
+                if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.controller) {
+                    window.webkit.messageHandlers.controller.postMessage({
+                        action: 'logout'
+                    });
+                }
+            });
+
+            function showLoggedInState(data) {
+                if (data && data.email && data.serverUrl && data.token) {
+                    userEmailSpan.textContent = data.email;
+                    serverInfoSpan.textContent = data.serverUrl;
+                    loginSection.classList.add('hidden');
+                    logoutSection.classList.add('visible');
+                    document.getElementById('settings-info').style.display = 'none';
+                }
+            }
+
+            function showLoginState() {
+                loginSection.classList.remove('hidden');
+                logoutSection.classList.remove('visible');
+                errorMessage.style.display = 'none';
+                document.getElementById('settings-info').style.display = 'block';
+            }
+
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+            }
+
+            // Listen for messages from Swift
+            window.addEventListener('message', function(event) {
+                if (event.data && event.data.action === 'loginResponse') {
+                    // This is handled in the login promise above
+                }
+            });
+        });
+    </script>
+</body>
+</html>
